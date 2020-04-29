@@ -28,3 +28,8 @@ ${function_name}("${value}");
 
 ```
 
+## Tests
+
+```bash
+$$ npm test
+```
