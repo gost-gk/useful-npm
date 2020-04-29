@@ -20,6 +20,14 @@
   "scripts": {
     "test": "mocha"
   },
+  "dependencies": {
+    "is-number": "^7.0.0",
+    "is-string": "^1.0.5",
+    "is-undefined": "^1.0.10",
+    "is-null": "^1.0.1",
+    "jquery": "^3.5.0",
+    "jquery-basic-arithmetic-plugin": "^1.1.0"
+  },
   "devDependencies": {
     "mocha": "^7.1.2"
   },
