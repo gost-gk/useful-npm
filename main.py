@@ -8,14 +8,18 @@ from typing import Dict, Union
 from num2words import num2words
 
 
-def create_viewmodel(number: int) -> Dict[str, str]:
+def create_viewmodel(number: int, previous_number: int, previous_version: str) -> Dict[str, str]:
     number_str = str(number)
     value_name = num2words(number)
+    previous_value_name = num2words(previous_number)
     return {
         'module_name': 'is-eq-' + value_name,
         'function_name': 'is' + number_str,
         'value': number_str,
-        'value_name': value_name
+        'value_name': value_name,
+        'previous_package': 'is-eq-' + previous_value_name,
+        'previous_package_version': previous_version,
+        'previous_function_name': 'is' + str(previous_number)
     }
 
 
@@ -62,13 +66,18 @@ def main():
     start, stop = map(int, sys.argv[1:])
 
     for i in range(start, stop):
-        viewmodel = create_viewmodel(i)
+        viewmodel = create_viewmodel(i, (i - 1) if i != 0 else 0, '1.1.0')
         package_name = viewmodel['module_name']
         package_path = pathlib.Path('./packages/').joinpath(package_name)
         remove_package(package_path)
         create_package_dir(package_path)
 
-        template = parse_template_package(pathlib.Path('.').joinpath('package-template'))
+        if i % 10 == 0:
+            template_path = pathlib.Path('.').joinpath('package-template-base')
+        else:
+            template_path = pathlib.Path('.').joinpath('package-template-recurrent')
+
+        template = parse_template_package(template_path)
         package = render_template_package(template, viewmodel)
         write_package(package, package_path)
 

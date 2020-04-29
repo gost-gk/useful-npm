@@ -1,7 +1,7 @@
 {
   "name": "${module_name}",
   "description": "Returns true if the given number is ${value}, false otherwise.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Gost (https://github.com/gost-gk)",
   "contributors": [
     "3.14159265",
