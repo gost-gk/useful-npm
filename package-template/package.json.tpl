@@ -9,7 +9,9 @@
   ],
   "license": "WTFPL",
   "files": [
-    "index.js"
+    "index.js",
+    "test.js",
+    ".gitignore"
   ],
   "main": "index.js",
   "engines": {
