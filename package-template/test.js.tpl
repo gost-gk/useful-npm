@@ -17,5 +17,6 @@ describe("${function_name}", function() {
         assert(!${function_name}(null));
         assert(!${function_name}(undefined));
         assert(!${function_name}("${value}"));
+        assert(!${function_name}({prop: "${value}"}));
     });
 });
